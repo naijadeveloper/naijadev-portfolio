@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --black-color: #222;
+  --white-color: #ccc;
+  --grey-color: #555;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black-color);
+}
+
+img {
+  width: 300px;
+}
+
+
+/* Wrapper App rules */
+div.App {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  font-size: 16px;
+}
+
+
+/* nav styles */
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15px;
+  padding-bottom: 0px; 
+}
+
+.nav h1 {
+  font-family: 'Squada One';
+  font-size: 4em;
+  text-transform: uppercase;
+  text-align: center;
+  color: seagreen;
+}
+
+.nav h1 span {
+  font-family: 'Squada One';
+  color: #eee;
+}
+
+.nav h1 span:nth-child(1) {
+  font-size: 0.8em;
+}
+
+/* nav links styles */
+.nav .nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin-top: 12px;
+  padding: 15px;
+  padding-bottom: 0px;
+}
+
+.nav .nav-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+  background-color: var(--grey-color);
+  color: var(--white-color);
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.nav .nav-links a.start-page {
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+.nav .nav-links a:hover {
+  opacity: 0.8;
+}

@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Nav from "./navComponent/Nav.js";
 import About from "./aboutComponent/About";
 import Repos from "./repoComponent/Repos";
@@ -17,6 +17,7 @@ const App = () => {
               <Route path="/about" element={<Navigate to="/" />} />
               <Route path="/repositories/*" element={<Repos />} />
               <Route path="/repos" element={<Navigate to="/repositories" />} />
+              <Route path="/NotFound" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

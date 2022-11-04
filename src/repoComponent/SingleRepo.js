@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import useFetch from "../customHook/useFetch";
 import RepoResuable from "./RepoReusable";
 import IsPending from "../helperComponents/IsPending";
+import NotFound from "../helperComponents/NotFound";
 
 const SingleRepo = () => {
   const {data, isPending, error} = useFetch("https://api.github.com/users/naijadeveloper/repos");
@@ -18,7 +19,7 @@ const SingleRepo = () => {
         singleRepo.push(repo);
       }
       return singleRepo;
-    }) 
+    })
   }
 
   return (
@@ -28,7 +29,13 @@ const SingleRepo = () => {
       </div>
       {error  && throwError()}
       {isPending && <IsPending />}
-      {data && <RepoResuable currentRepos={singleRepo}/>}
+      {data? 
+      singleRepo.length === 0? 
+      <NotFound />
+      : 
+      <RepoResuable currentRepos={singleRepo}/> 
+      : ""
+      }
     </div>
   )
 }

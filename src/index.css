@@ -253,7 +253,7 @@ main.contents {
 
 .repo-header .repo-fullname p{
   padding: 2px 5px 2px 5px;
-  font-size: 1em;
+  font-size: 1.5em;
   text-align: center;
   background-color: var(--white-color);
   color: var(--black-color);
@@ -310,7 +310,7 @@ main.contents {
 
 
 /* General styles for single-repo-page, error-boundary page and not-found page */
-div.single-repo-page {
+.error-boundary-view, .not-found-page, .single-repo-page {
   position: fixed;
   top: 0;
   left: 0;
@@ -347,4 +347,28 @@ div.single-repo-page {
 .single-repo-page .repo-footer .repo-footer-span:not(:first-child) {
   border: 2px solid var(--green-color);
   background-color: var(--light-green-color);
+}
+
+
+/* Error-boundary page and Not-found page styles */
+.error-boundary-view span:first-child, .not-found-page span:first-child {
+  font-size: 2.5em;
+}
+
+.error-boundary-view a, .not-found-page a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.8em;
+  margin-top: 10px;
+  padding: 10px 20px 10px 20px;
+  border: 2px solid var(--green-color);
+  background-color: var(--light-green-color);
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.not-found-page a:not(:first-child) {
+  margin-top: 20px;
 }

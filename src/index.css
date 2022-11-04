@@ -344,7 +344,7 @@ main.contents {
   color: var(--white-color);
 }
 
-.single-repo-page .repo-footer .repo-footer-span:not(:first-child) {
+.single-repo-page .repo-footer .go-to-github, .single-repo-page .repo-footer .preview-website {
   border: 2px solid var(--green-color);
   background-color: var(--light-green-color);
 }

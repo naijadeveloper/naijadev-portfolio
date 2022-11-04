@@ -28,7 +28,7 @@ img {
 div.App {
   width: 100%;
   min-height: 100vh;
-  background-color: #000;
+  background-color: #111;
   font-size: 16px;
 }
 
@@ -47,8 +47,8 @@ div.App {
 .nav h1 {
   font-family: 'Squada One';
   font-size: 4em;
-  text-transform: uppercase;
   text-align: center;
+  text-transform: uppercase;
   color: seagreen;
 }
 
@@ -96,4 +96,117 @@ div.App {
 
 .nav .nav-links a:hover {
   opacity: 0.8;
+}
+
+
+/* Main contents rules */
+main.contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 98%;
+  min-height: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ccc;
+}
+
+
+/* The about page */
+.contents .avatar-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.avatar-img img{
+  border: 5px solid seagreen;
+}
+
+.github-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  color: #222;
+}
+
+.github-bio {
+  width: 90%;
+  font-size: 1.7em;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.github-bio span {
+  display: block;
+  margin: 10px;
+}
+
+.about .boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  font-size: 1.3em;
+}
+
+.boxes .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 350px;
+  height: 170px;
+  margin: 10px;
+  padding: 5px;
+  border: 5px solid seagreen;
+}
+
+.box span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  width: 100%;
+  text-align: center;
+  color: #222;
+}
+
+.box span:nth-child(1) {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+}
+
+.box:hover span a {
+  border-bottom: 2px solid #222;
+}
+
+
+/* IsPending page styles */
+.pending {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.pending span:first-child {
+  font-size: 2.5em;
 }

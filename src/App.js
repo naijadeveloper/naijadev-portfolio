@@ -17,7 +17,6 @@ const App = () => {
               <Route path="/about" element={<Navigate to="/" />} />
               <Route path="/repositories/*" element={<Repos />} />
               <Route path="/repos" element={<Navigate to="/repositories" />} />
-              <Route path="/NotFound" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

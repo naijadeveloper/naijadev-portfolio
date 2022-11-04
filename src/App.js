@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Nav from "./navComponent/Nav.js";
 import About from "./aboutComponent/About";
 import Repos from "./repoComponent/Repos";

@@ -328,6 +328,10 @@ main.contents {
   background-color: var(--white-color);
 }
 
+.single-repo-page .not-found-page {
+  font-size: 1em;
+}
+
 /* styles for single repo page */
 .single-repo-page .close-single-repo-page {
   position: fixed;

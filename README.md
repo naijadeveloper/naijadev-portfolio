@@ -7,4 +7,4 @@
 - I implemented **Error Boundary**, I designed a page for the error boundary.
 - And lastly, I created a **404 page**.
 
-You can preview the website at [CodeSandbox](https://markdownlivepreview.com/).
+You can preview the website at [Vercel](https://naijadeveloper-github-info-website.vercel.app/).

@@ -12,6 +12,8 @@
   --black-color: #222;
   --white-color: #ccc;
   --grey-color: #555;
+  --green-color: green;
+  --light-green-color: seagreen;
 }
 
 a {
@@ -49,12 +51,12 @@ div.App {
   font-size: 4em;
   text-align: center;
   text-transform: uppercase;
-  color: seagreen;
+  color: var(--light-green-color);
 }
 
 .nav h1 span {
   font-family: 'Squada One';
-  color: #eee;
+  color: var(--white-color);
 }
 
 .nav h1 span:nth-child(1) {
@@ -109,7 +111,7 @@ main.contents {
   min-height: 400px;
   margin: 0 auto;
   padding: 30px;
-  background-color: #ccc;
+  background-color: var(--white-color);
 }
 
 
@@ -123,7 +125,7 @@ main.contents {
 }
 
 .avatar-img img{
-  border: 5px solid seagreen;
+  border: 5px solid var(--light-green-color);
 }
 
 .github-name {
@@ -135,7 +137,7 @@ main.contents {
   font-size: 3em;
   font-weight: bold;
   text-align: center;
-  color: #222;
+  color: var(--black-color);
 }
 
 .github-bio {
@@ -171,7 +173,7 @@ main.contents {
   height: 170px;
   margin: 10px;
   padding: 5px;
-  border: 5px solid seagreen;
+  border: 5px solid var(--light-green-color);
 }
 
 .box span {
@@ -182,7 +184,7 @@ main.contents {
 
   width: 100%;
   text-align: center;
-  color: #222;
+  color: var(--black-color);
 }
 
 .box span:nth-child(1) {
@@ -192,7 +194,7 @@ main.contents {
 }
 
 .box:hover span a {
-  border-bottom: 2px solid #222;
+  border-bottom: 2px solid var(--black-color);
 }
 
 
@@ -209,4 +211,140 @@ main.contents {
 
 .pending span:first-child {
   font-size: 2.5em;
+}
+
+
+/* The repositories page */
+.repos .repo {
+  display: flex;
+  flex-direction: column;
+
+  width: 60%;
+  min-height: 200px;
+  margin: 0 auto;
+  background-color: var(--light-green-color);
+  color: var(--white-color);
+  border: 2px solid var(--green-color);
+  box-shadow: 1px 2px 2px var(--black-color);
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.repos .repo:not(:first-child) {
+  margin-top: 30px;
+}
+
+.repo:hover {
+  transform: scale(1.05);
+}
+
+.repo > div {
+  flex: 1;
+  width: 100%;
+  padding: 10px;
+}
+
+.repo-header, .repo-body, .repo-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.repo-header .repo-fullname p{
+  padding: 2px 5px 2px 5px;
+  font-size: 1em;
+  text-align: center;
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+.repo-body .repo-description {
+  text-align: center;
+}
+
+.repo-footer {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.repo-footer .repo-footer-span {
+  margin: 5px;
+  padding: 5px;
+  font-size: 0.9em;
+  background-color: var(--black-color);
+}
+
+.repo-footer .languages {
+  background-color: var(--grey-color);
+}
+
+.repo-footer .repo-footer-span:not(:last-child) {
+  margin-right: 10px;
+}
+
+.repo-footer-span a {
+  color: var(--white-color);
+}
+
+
+.repo-pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  margin: 5px;
+  margin-top: 30px;
+}
+
+.repo-pagination .previous-section, .repo-pagination .next-section {
+  padding: 20px;
+  font-size: 2em;
+  background-color: var(--black-color);
+  cursor: pointer;
+}
+
+.repo-pagination .previous-section {
+  background-color: var(--grey-color);
+}
+
+
+/* General styles for single-repo-page, error-boundary page and not-found page */
+div.single-repo-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  
+  width: 100%;
+  height: 100vh;
+  font-size: 1.5em;
+  text-align: center;
+  background-color: var(--white-color);
+}
+
+/* styles for single repo page */
+.single-repo-page .close-single-repo-page {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  font-size: 1.5em;
+}
+
+.single-repo-page .repo:hover {
+  transform: scale(1);
+}
+
+.single-repo-page .repo-footer .repo-footer-span:first-child {
+  color: var(--white-color);
+}
+
+.single-repo-page .repo-footer .repo-footer-span:not(:first-child) {
+  border: 2px solid var(--green-color);
+  background-color: var(--light-green-color);
 }

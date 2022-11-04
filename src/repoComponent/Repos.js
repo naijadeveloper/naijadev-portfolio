@@ -3,6 +3,9 @@ import useFetch from "../customHook/useFetch";
 import ReposView from "./ReposView";
 import IsPending from "../helperComponents/IsPending";
 
+import { Routes, Route } from "react-router-dom";
+import SingleRepo from "./SingleRepo";
+
 const Repos = () => {
   const {data, isPending, error} = useFetch("https://api.github.com/users/naijadeveloper/repos");
 
@@ -26,6 +29,10 @@ const Repos = () => {
       {error  && throwError()}
       {isPending && <IsPending />}
       {data && <ReposView data={data.sort((a, b) => b.id - a.id)} />}
+
+      <Routes>
+        <Route path=":repoId" element={<SingleRepo />} />
+      </Routes>
     </div>
   );
 }

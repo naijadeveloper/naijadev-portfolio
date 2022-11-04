@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import RepoReusable from "./RepoReusable";
 
 const ReposView = ({data}) => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
   const pageNumbers = [];
@@ -16,7 +18,7 @@ const ReposView = ({data}) => {
   const currentRepos = data.slice(indexOfFirstPost, indexOfLastPost);
 
   function openPageForOneRepo (id) {
-    window.location.href = `/repositories/${id}`;
+    navigate(`/repositories/${id}`);
   }
 
   function handlePreviousButton (e) {

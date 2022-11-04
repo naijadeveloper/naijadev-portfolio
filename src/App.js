@@ -1,8 +1,7 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Nav from "./navComponent/Nav.js";
 import About from "./aboutComponent/About";
 import Repos from "./repoComponent/Repos";
-import SingleRepo from "./repoComponent/SingleRepo";
 import NotFound from "./helperComponents/NotFound";
 import ErrorBoundary from "./helperComponents/ErrorBoundary";
 
@@ -13,27 +12,13 @@ const App = () => {
         <div className="App">
           <Nav />
           <main className="contents">
-            <Switch>
-              <Route exact path="/">
-                <About />
-              </Route>
-
-              <Route path="/about">
-                <About />
-              </Route>
-
-              <Route exact path="/repositories">
-                <Repos />
-              </Route>
-
-              <Route path="/repositories/:repoId">
-                <SingleRepo />
-              </Route>
-
-              <Route path="*">
-                  <NotFound />
-              </Route>
-            </Switch>
+            <Routes>
+              <Route path="/" element={<About />} />
+              <Route path="/about" element={<Navigate to="/" />} />
+              <Route path="/repositories/*" element={<Repos />} />
+              <Route path="/repos" element={<Navigate to="/repositories" />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </main>
         </div>
       </ErrorBoundary>

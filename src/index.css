@@ -91,6 +91,14 @@ div.App {
   cursor: pointer;
 }
 
+.nav .nav-links a:first-child {
+  border-top-left-radius: 5px;
+}
+
+.nav .nav-links a:last-child {
+  border-top-right-radius: 5px;
+}
+
 .nav .nav-links a.start-page {
   background-color: var(--white-color);
   color: var(--black-color);
@@ -112,6 +120,11 @@ main.contents {
   margin: 0 auto;
   padding: 30px;
   background-color: var(--white-color);
+}
+
+main.contents > div {
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -173,10 +186,15 @@ main.contents {
   height: 170px;
   margin: 10px;
   padding: 5px;
-  border: 5px solid var(--light-green-color);
+  background-color: var(--light-green-color);
+  border-radius: 10px;
+  border-bottom: 6px solid rgb(26, 84, 51);
+  border-left: 2px solid rgb(26, 84, 51);
+  cursor: pointer;
+  position: relative;
 }
 
-.box span {
+.box p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -184,17 +202,39 @@ main.contents {
 
   width: 100%;
   text-align: center;
+}
+
+.boxes .box:nth-child(1) p:nth-child(1) span:nth-child(1) {
+  position: relative;
+  top: -6px;
+}
+
+.box p:nth-child(1) span:nth-child(1) {
+  margin-right: 5px;
+  padding: 1px;
+}
+
+.box p:nth-child(1) span:nth-child(2) {
   color: var(--black-color);
 }
 
-.box span:nth-child(1) {
+.box p:nth-child(1) {
   font-size: 1.5em;
   font-weight: bold;
   text-align: left;
 }
 
-.box:hover span a {
-  border-bottom: 2px solid var(--black-color);
+.box p:nth-child(2) {
+  color: var(--white-color);
+}
+
+.box:not(:last-child):hover {
+  top: 3px;
+  border-bottom-width: 3px;
+}
+
+.box:not(:last-child):hover p:nth-child(1) span:nth-child(2) {
+  text-decoration: underline;
 }
 
 
@@ -215,31 +255,42 @@ main.contents {
 
 
 /* The repositories page */
+.repos {
+  width: 100%;
+}
+
 .repos .repo {
   display: flex;
+  justify-content: center;
   flex-direction: column;
 
-  width: 60%;
-  min-height: 200px;
+  width: 50%;
+  min-height: 250px;
+  padding: 10px;
   margin: 0 auto;
-  background-color: var(--light-green-color);
   color: var(--white-color);
-  border: 2px solid var(--green-color);
-  box-shadow: 1px 2px 2px var(--black-color);
-  transition: transform 0.5s;
+  
+  background-color: var(--light-green-color);
+  border-radius: 10px;
+  border-bottom: 6px solid rgb(26, 84, 51);
+  border-left: 2px solid rgb(26, 84, 51);
   cursor: pointer;
+
+  position: relative;
 }
+
 
 .repos .repo:not(:first-child) {
   margin-top: 30px;
 }
 
 .repo:hover {
-  transform: scale(1.05);
+  top: 3px;
+  border-bottom-width: 3px;
 }
 
 .repo > div {
-  flex: 1;
+  /* flex: 1; */
   width: 100%;
   padding: 10px;
 }
@@ -253,44 +304,28 @@ main.contents {
 
 .repo-header .repo-fullname p{
   padding: 2px 5px 2px 5px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: center;
   background-color: var(--white-color);
   color: var(--black-color);
+  border-radius: 2px;
 }
 
 .repo-body .repo-description {
   text-align: center;
 }
 
-.repo-footer {
-  flex-direction: row;
-  justify-content: center;
+.repos .repo-body .repo-description {
+  line-height: 22px;
 }
 
-.repo-footer .repo-footer-span {
-  margin: 5px;
-  padding: 5px;
-  font-size: 0.9em;
-  background-color: var(--black-color);
+.repo-body .repo-description span {
+  font-size: 1.7em;
 }
-
-.repo-footer .languages {
-  background-color: var(--grey-color);
-}
-
-.repo-footer .repo-footer-span:not(:last-child) {
-  margin-right: 10px;
-}
-
-.repo-footer-span a {
-  color: var(--white-color);
-}
-
 
 .repo-pagination {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 
   margin: 5px;
@@ -300,13 +335,26 @@ main.contents {
 .repo-pagination .previous-section, .repo-pagination .next-section {
   padding: 20px;
   font-size: 2em;
-  background-color: var(--black-color);
+  border-radius: 10px;
+  border-bottom: 6px solid rgb(59, 59, 59);
+  border-left: 2px solid rgb(59, 59, 59);
   cursor: pointer;
+  position: relative;
+}
+
+.repo-pagination .next-section {
+  background-color: var(--black-color);
 }
 
 .repo-pagination .previous-section {
   background-color: var(--grey-color);
 }
+
+.repo-pagination .next-section:hover, .repo-pagination .previous-section:hover {
+  top: 3px;
+  border-bottom-width: 3px;
+}
+
 
 
 /* General styles for single-repo-page, error-boundary page and not-found page */
@@ -315,6 +363,7 @@ main.contents {
   top: 0;
   left: 0;
 
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -322,10 +371,11 @@ main.contents {
 
   
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-size: 1.5em;
   text-align: center;
   background-color: var(--white-color);
+  padding: 0px 20px 0px 20px;
 }
 
 .single-repo-page .not-found-page {
@@ -337,11 +387,35 @@ main.contents {
   position: fixed;
   top: 10px;
   left: 15px;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
-.single-repo-page .repo:hover {
-  transform: scale(1);
+.single-repo-page .repo-description {
+  width: 80%;
+}
+
+.single-repo-page .repo-footer {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.single-repo-page .repo-footer .repo-footer-span {
+  margin: 5px;
+  padding: 5px;
+  font-size: 0.9em;
+  background-color: var(--black-color);
+}
+
+.single-repo-page .repo-footer .languages {
+  background-color: var(--grey-color);
+}
+
+.single-repo-page .repo-footer .repo-footer-span:not(:last-child) {
+  margin-right: 10px;
+}
+
+.single-repo-page .repo-footer-span a {
+  color: var(--white-color);
 }
 
 .single-repo-page .repo-footer .repo-footer-span:first-child {
@@ -349,8 +423,17 @@ main.contents {
 }
 
 .single-repo-page .repo-footer .go-to-github, .single-repo-page .repo-footer .preview-website {
-  border: 2px solid var(--green-color);
   background-color: var(--light-green-color);
+  border-radius: 10px;
+  border-bottom: 6px solid rgb(26, 84, 51);
+  border-left: 2px solid rgb(26, 84, 51);
+  cursor: pointer;
+  position: relative;
+}
+
+.single-repo-page .repo-footer .go-to-github:hover, .single-repo-page .repo-footer .preview-website:hover {
+  top: 3px;
+  border-bottom-width: 3px;
 }
 
 
@@ -359,179 +442,29 @@ main.contents {
   font-size: 2.5em;
 }
 
-.error-boundary-view a, .not-found-page a {
+.error-boundary-view button, .not-found-page a {
   display: flex;
   justify-content: center;
   align-items: center;
 
   font-size: 0.8em;
+  border: none;
+  border-radius: 10px;
+  border-bottom: 6px solid rgb(26, 84, 51);
+  border-left: 2px solid rgb(26, 84, 51);
   margin-top: 10px;
   padding: 10px 20px 10px 20px;
-  border: 2px solid var(--green-color);
   background-color: var(--light-green-color);
   color: var(--white-color);
   cursor: pointer;
+  position: relative;
+}
+
+.error-boundary-view button:hover, .not-found-page a:hover {
+  top: 3px;
+  border-bottom-width: 3px;
 }
 
 .not-found-page a:not(:first-child) {
   margin-top: 20px;
-}
-
-
-
-
-/* Responsive CSS */
-@media screen and (max-width: 960px) {
-  .repos .repo {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 860px) {
-  .repos .repo {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 763px) {
-  .github-bio {
-    width: 100%;
-  }
-
-  .boxes .box {
-    width: 450px;
-  }
-
-  .repos .repo {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .repo-header .repo-fullname p{
-    font-size: 1.3em;
-  }
-
-  .repo-footer .repo-footer-span {
-    font-size: 0.8em;
-  }
-
-  .repo-footer .repo-footer-span {
-    margin: 0px;
-  }
-
-  .repo-footer {
-    justify-content: space-evenly;
-  }
-
-  .repo-footer .repo-footer-span:not(:last-child) {
-    margin-right: 0px;
-  }
-}
-
-@media screen and (max-width: 580px) {
-  .nav h1 {
-    font-size: 3.5em;
-  }
-
-  main.contents {
-    padding: 5px;
-    padding-top: 20px;
-  }
-
-  .github-bio {
-    font-size: 1.6em;
-  }
-
-  .repo:hover {
-    transform: scale(1);
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .nav h1 {
-    font-size: 3em;
-  }
-
-  .github-name {
-    font-size: 2.7em;
-  }
-
-  .github-bio {
-    font-size: 1.5em;
-  }
-
-  .repo > div {
-    padding: 5px;
-  }
-
-  .repo-footer .repo-footer-span {
-    font-size: 0.7em;
-  }
-}
-
-@media screen and (max-width: 475px) {
-  .nav h1 {
-    font-size: 2.5em;
-  }
-
-  main.contents {
-    padding-top: 20px;
-  }
-
-  .github-name {
-    font-size: 2.3em;
-  }
-
-  .github-bio {
-    font-size: 1.3em;
-  }
-
-  .boxes .box {
-    width: 100%;
-  }
-
-  .repo-header .repo-fullname p{
-    font-size: 1em;
-  }
-
-  .repo-pagination {
-    justify-content: space-between;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .nav h1 {
-    font-size: 2.2em;
-  }
-
-  .nav .nav-links a {
-    font-size: 0.9em;
-  }
-
-  .github-name {
-    font-size: 2.1em;
-  }
-
-  .about .boxes {
-    font-size: 1.1em;
-  }
-
-  .single-repo-page .repo-footer {
-    flex-direction: column;
-  }
-
-  .single-repo-page .repo-footer .repo-footer-span:not(:first-child) {
-    margin-top: 10px;
-  }
-}
-
-@media screen and (max-width: 340px) {
-  img {
-    width: 100%;
-  }
-
-  .box span:nth-child(1) {
-    text-align: center;
-  }
 }

@@ -1,13 +1,10 @@
-import { useEffect } from "react";
-import useFetch from "../customHook/useFetch";
+import { useEffect, useContext } from "react";
 import ReposView from "./ReposView";
 import IsPending from "../helperComponents/IsPending";
-
-import { Routes, Route } from "react-router-dom";
-import SingleRepo from "./SingleRepo";
+import GithubInfoContext from "../context/GithubInfoContext";
 
 const Repos = () => {
-  const {data, isPending, error} = useFetch("https://api.github.com/users/naijadeveloper/repos");
+  const {reposData, reposIsPending, reposError} = useContext(GithubInfoContext);
 
   useEffect(() => {
     const nav_about = document.querySelector(".nav-links a:first-child");
@@ -26,13 +23,9 @@ const Repos = () => {
 
   return (
     <div>
-      {error  && throwError()}
-      {isPending && <IsPending />}
-      {data && <ReposView data={data.sort((a, b) => b.id - a.id)} />}
-
-      <Routes>
-        <Route path=":repoId" element={<SingleRepo />} />
-      </Routes>
+      {reposError  && throwError()}
+      {reposIsPending && <IsPending />}
+      {reposData && <ReposView data={reposData.sort((a, b) => b.id - a.id)} />}
     </div>
   );
 }

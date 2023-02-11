@@ -1,34 +1,24 @@
-import { Component, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Component } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ErrorBoundary({children}) {
-  const [hasError, setHasError] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (hasError) {
-      setHasError(false);
-    }
-  }, [location.key]);
+  function navigateBack() {
+    navigate(location.pathname);
+  }
 
   return (
-    /**
-     * NEW: The class component error boundary is now
-     *      a child of the functional component.
-     */
     <ErrorBoundaryInner 
-      hasError={hasError} 
-      setHasError={setHasError}
+      location={location}
+      navigateBack={navigateBack}
     >
       {children}
     </ErrorBoundaryInner>
   );
 }
 
-/**
- * NEW: The class component accepts getters and setters for
- *      the parent functional component's error state.
- */
 class ErrorBoundaryInner extends Component {
   constructor(props) {
     super(props);
@@ -39,16 +29,6 @@ class ErrorBoundaryInner extends Component {
     return { hasError: true };
   }
 
-  componentDidUpdate(prevProps, _previousState) {
-    if(!this.props.hasError && prevProps.hasError) {
-      this.setState({ hasError: false });
-    }
-  }
-
-  componentDidCatch(_error, _errorInfo) {
-    this.props.setHasError(true);
-  }
-
   render() {
     if (this.state.hasError) {
       return (
@@ -56,7 +36,10 @@ class ErrorBoundaryInner extends Component {
           <span>😢😭</span>
           <span>I am so sorry.</span>
           <span>Something went super wrong.</span>
-          <Link to="/">Go Back</Link>
+          <button onClick={() => {
+            this.setState({hasError: false});
+            this.props.navigateBack();
+          }}>Go Back</button>
         </div>
       );
     }

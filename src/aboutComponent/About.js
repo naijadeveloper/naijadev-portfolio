@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import useFetch from "../customHook/useFetch";
 import AboutView from "./AboutView";
 import IsPending from "../helperComponents/IsPending"
 
+import { useContext } from "react";
+import GithubInfoContext from "../context/GithubInfoContext";
+
 const About = () => {
-  const {data, isPending, error} = useFetch("https://api.github.com/users/naijadeveloper");
+  const {profileData, profileIsPending, profileError, handlePageChange, handleSetPos} = useContext(GithubInfoContext);
 
   function throwError () {
     throw new Error();
@@ -19,13 +21,15 @@ const About = () => {
     //
     nav_repo.style.backgroundColor = "#555";
     nav_repo.style.color = "#ccc";
+    handlePageChange(1);
+    handleSetPos(0);
   }, [])
 
   return (
     <div>
-      {error  && throwError()}
-      {isPending && <IsPending />}
-      {data && <AboutView data={data}/>}
+      {profileError  && throwError()}
+      {profileIsPending && <IsPending />}
+      {profileData && <AboutView data={profileData}/>}
     </div>
   );
 }

@@ -1,5 +1,8 @@
-
 const AboutView = ({data}) => {
+
+  function openUrl(url) {
+    window.open(url, '_blank');
+  }
 
   return (
     <section className="about">
@@ -18,46 +21,55 @@ const AboutView = ({data}) => {
       </p>
 
       <div className="boxes">
-        <p className="box blog">
-          <span>
-            <a href="https://dev.to/naijadeveloper">✍🏾 Blog</a>
-          </span>
-          <span>
+        <div className="box blog" onClick={() => openUrl('https://dev.to/naijadeveloper')}>
+          <p>
+            <span aria-label="write-emoji">✍🏾</span>
+            <span>Blog</span>
+          </p>
+          <p>
             Read my articles, like, comment or share
-          </span>
-        </p>
+          </p>
+        </div>
 
-        <p className="box github-login">
-          <span>
-            <a href={data.html_url}>👨🏾‍💻 Github</a>
-          </span>
-          <span>
+        <div className="box github-login" onClick={() => openUrl(`${data.html_url}`)}>
+          <p>
+            <span aria-label="laptop-emoji">💻</span> 
+            <span>Github</span>
+          </p>
+          <p>
             Checkout or contribute to any of my open source projects.
-          </span>
-        </p>
+          </p>
+        </div>
 
-        <p className="box twitter">
-          <span>
-            <a href={`https://twitter.com/${data.twitter_username}`}>🐦 Twitter</a>
-          </span>
-          <span>
+        <div className="box twitter" onClick={() => openUrl(`https://twitter.com/${data.twitter_username}`)}>
+          <p>
+            <span aria-label="bird-emoji">🐦</span> 
+            <span>Twitter</span>
+          </p>
+          <p>
             Follow me, interact with my tweets and maybe send a DM.
-          </span>
-        </p>
+          </p>
+        </div>
 
-        <p className="box sandbox">
-          <span>
-            <a href={`${data.blog}`}>🎨 CodeSandbox</a>
-          </span>
-          <span>
+        <div className="box sandbox" onClick={() => openUrl(`${data.blog}`)}>
+          <p>
+            <span aria-label="paint-board-emoji">🎨</span> 
+            <span>CodeSandbox</span>
+          </p>
+          <p>
             View and like my sandboxes. DM your thoughts on twitter
-          </span>
-        </p>
+          </p>
+        </div>
         
-        <p className="box location">
-          <span>🗺 Location</span>
-          <span>I currently live in {data.location}</span>
-        </p>
+        <div className="box location">
+          <p>
+            <span aria-label="map-emoji" style={{color: '#ccc'}}>🗺</span> 
+            <span>Location</span>
+          </p>
+          <p>
+            I currently live in {data.location}
+          </p>
+        </div>
       </div>
     </section>
   );

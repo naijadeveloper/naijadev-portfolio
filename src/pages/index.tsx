@@ -1,6 +1,6 @@
-export default function HomePage() {
+export default function homePage() {
   return (
-    <div className="h-screen bg-gray-800 text-white">
+    <div className="">
       <h1>Home Page</h1>
       <p>This is the home page</p>
     </div>

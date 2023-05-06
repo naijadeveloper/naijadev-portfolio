@@ -11,6 +11,24 @@
   }
 }
 
+@layer components {
+  .glass {
+    background: rgba(11, 11, 11, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(11, 11, 11, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(255, 252, 252, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 252, 252, 0.3);
+  }
+}
+
 @layer utilities {
   @keyframes blob {
     0%,
@@ -53,7 +71,7 @@
   @keyframes bounce-y {
     0%,
     100% {
-      transform: translateY(-10%);
+      transform: translateY(10%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
     50% {

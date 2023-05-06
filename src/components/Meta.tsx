@@ -13,10 +13,7 @@ export default function Meta({ title, description, keywords }: MetaProps) {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <link rel="icon" href="/code.png" />
-      {/* <a href="https://www.flaticon.com/free-icons/code" title="code icons">
-        Code icons created by Royyan Wijaya - Flaticon
-      </a> */}
+      <link rel="icon" href="/logo.png" />
     </Head>
   );
 }

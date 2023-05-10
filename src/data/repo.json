@@ -1,0 +1,28 @@
+[
+  {
+    "name": "LikeITBuyIT",
+    "tools": ["Next", "Chakraui", "Framer Motion", "Tailwindcss", "MongoDb", "Firebase", "NextAuth", "Stripe"],
+    "description": "An ecommerce website where users can buy items on sale or register and post items for sale.",
+    "websiteLink": "#",
+    "githubLink": "#",
+    "date": "2023-04-14T17:26:03Z"
+  },
+
+  {
+    "name": "eChatter",
+    "tools": ["Next", "Chakraui", "Framer Motion", "Tailwindcss", "MongoDb", "Firebase", "NextAuth"],
+    "description": "A social media network, where users can create blog posts, read blog posts, collaborate on a post, interact in comments or privately, share books and different document formats, share pictures and short snippets of videos.",
+    "websiteLink": "#",
+    "githubLink": "#",
+    "date": "2023-04-14T17:26:03Z"
+  },
+
+  {
+    "name": "Rypto",
+    "tools": ["Next", "Chakraui", "Framer", "Tailwindcss", "MongoDb", "Firebase", "web3"],
+    "description": "A social media network, where users can create blog posts, read blog posts, collaborate on a post, interact in comments or privately, share books and different document formats, share pictures and short snippets of videos.",
+    "websiteLink": "#",
+    "githubLink": "#",
+    "date": "2023-04-14T17:26:03Z"
+  }
+]

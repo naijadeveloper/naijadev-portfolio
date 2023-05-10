@@ -9,6 +9,13 @@
   h2 {
     @apply text-4xl font-extrabold my-4;
   }
+  img {
+    @apply shrink-0;
+  }
+
+  ul.tools-list img {
+    @apply w-7;
+  }
 }
 
 @layer components {

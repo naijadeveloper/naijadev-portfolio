@@ -13,7 +13,7 @@ export default function Meta({ title, description, keywords }: MetaProps) {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <link rel="icon" href="/logo.png" />
+      <link rel="icon" href="/imgs/logo.png" />
     </Head>
   );
 }

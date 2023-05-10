@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import Meta from "./Meta";
 import Header from "./Header";
 import { Poppins } from "next/font/google";
@@ -8,6 +8,11 @@ const appFont = Poppins({
   subsets: ["latin"],
   variable: "--font-appfont",
 });
+
+export type themeProp = {
+  theme: string;
+  setTheme: React.Dispatch<React.SetStateAction<string>>;
+};
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<string>("");

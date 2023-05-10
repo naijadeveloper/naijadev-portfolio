@@ -1,6 +1,7 @@
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
+import type { themeProp } from "./AppLayout";
 
-export default function ThemeSwitch({ theme, setTheme }) {
+export default function ThemeSwitch({ theme, setTheme }: themeProp) {
   return (
     <>
       {/* markup for the light => dark mode switch */}

@@ -1,12 +1,13 @@
 import { Squada_One } from "next/font/google";
 import ThemeSwitch from "./ThemeSwitch";
+import type { themeProp } from "./AppLayout";
 
 const headfont = Squada_One({
   weight: "400",
   subsets: ["latin"],
 });
 
-export default function Header({ theme, setTheme }) {
+export default function Header({ theme, setTheme }: themeProp) {
   return (
     <header className="relative flex justify-center items-center pb-3">
       <h1 className={`uppercase ${headfont.className} max-[500px]:text-4xl`}>

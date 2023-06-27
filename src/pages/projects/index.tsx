@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { RiLayoutGridFill } from "react-icons/ri";
-import { HiViewList } from "react-icons/hi";
+import type { GetStaticProps } from "next";
+import Link from "next/link";
+import matter from "gray-matter";
+import { BsGithub } from "react-icons/bs";
 
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/Footer";
 
-import repo from "@/data/repo.json";
+import repos from "@/data/repo.json";
 
 interface repoProps {
   name: string;
@@ -17,18 +17,73 @@ interface repoProps {
   date: string;
 }
 
-const enum listStyle {
-  BOX = "box layout",
-  RECT = "rect layout",
-}
-
-export default function projectsPage() {
-  const [listArrangeStyle, setListArrangeStyle] = useState<string>(
-    listStyle.BOX
+export const getStaticProps: GetStaticProps = async () => {
+  //1 get all repo (https://api.github.com/users/naijadeveloper/repos)
+  const getRepos = await fetch(
+    "https://api.github.com/users/naijadeveloper/repos"
   );
+  const myrepos = await getRepos.json();
+  //2 check if #use is in description, filter through (repo.name, repo.description && repo.created_at)
+  let validRepos = myrepos.filter((repo) =>
+    repo?.description?.includes("#use")
+  );
+  //3 date conversion to millseconds offset from 1970 use Date.now("date string");
+  // date sort let arry = [1,2,3] it should be 3,2,1. so
+  // arry.sort((a,b) => b-a);
+  validRepos = validRepos.sort((repo1, repo2) => {
+    let date1 = repo1?.created_at;
+    let date2 = repo2?.created_at;
+    // @ts-ignore
+    return Date.now(date2) - Date.now(date1);
+  });
+  //4 fetch the metadata from the README file for each repo, create object of that with the date (https://api.github.com/repos/naijadeveloper/repo-name/contents) then (if content.name is README.md, get content.download_url) then (const { data: frontmatter, content } = matter(mdFile);) if frontmatter is an empty object, *ignore* that repo then
+  const reposData: repoProps[] = validRepos.map((repo) => {
+    const repoDate: string = repo?.created_at;
+    // fetch contents
+    // fetch(`https://api.github.com/repos/naijadeveloper/${repo?.name}/contents`)
+    //   .then((res) => res.json())
+    //   .then((contents) => {
+    //     let validContent = contents.filter(
+    //       (content) => content?.name == "README.md"
+    //     );
+    //     fetch(validContent[0]?.download_url)
+    //       .then((res) => res.text())
+    //       .then((md) => {
+    //         const { data: frontmatter } = matter(md);
+    //         if (Object.values(frontmatter).length == 0) return;
+    //         let rObject = {
+    //           ...(frontmatter as {
+    //             name: string;
+    //             tools: string[];
+    //             description: string;
+    //             websiteLink: string;
+    //             githubLink: string;
+    //           }),
+    //           date: repoDate,
+    //         };
+    //         return rObject;
+    //       });
+    //   });
+  });
+  //5 finally return the array of objects
+  return {
+    props: {
+      reposData,
+    },
+    revalidate: 50,
+  };
+};
+
+export default function projectsPage({
+  reposData,
+}: {
+  reposData: repoProps[];
+}) {
+  console.log(reposData);
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
+
   return (
     <>
       <Navigation
@@ -41,46 +96,63 @@ export default function projectsPage() {
         darkli2_bg="dark:bg-gray-900"
         darkli2_tx="dark:text-gray-100"
       />
+
       <div className="relative mx-auto min-h-screen w-full bg-gray-100 p-4 pt-16 pb-14 dark:bg-gray-900 md:w-[98%] md:rounded-t-lg flex flex-col items-center">
-        <div className="w-full md:w-[90%] flex items-center justify-center">
-          <span className="w-[40px] h-[40px] flex items-center justify-end rounded rounded-tr-none rounded-br-none p-2 bg-gray-300 text-gray-800 dark:bg-gray-800 dark:text-gray-100">
-            <AiOutlineSearch />
-          </span>
-
-          <form onSubmit={handleSubmit} className="grow-[3]">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full h-[40px] rounded rounded-tl-none rounded-bl-none p-2 pl-0 bg-gray-300 text-gray-800 outline-0 dark:bg-gray-800 dark:text-gray-100"
-            />
-          </form>
-
-          <div className="flex items-center justify-center ml-1 rounded p-1 bg-gray-900 text-gray-100 dark:bg-gray-100 dark:text-gray-800">
-            <button
-              onClick={() => setListArrangeStyle(listStyle.BOX)}
-              className={`w-[30px] h-[30px] flex items-center justify-center outline-none rounded ${
-                listArrangeStyle == listStyle.BOX
-                  ? "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100"
-                  : ""
-              }`}
+        <section className={`mt-8 w-full flex flex-col gap-10`}>
+          {reposData.map((repo, index) => (
+            <article
+              key={index}
+              className={`relative p-2 rounded-md bg-gray-400 mx-auto w-[70%] max-md:w-[80%] max-sm:w-[98%] min-h-[90px] dark:bg-gray-800`}
             >
-              <RiLayoutGridFill />
-            </button>
-            <button
-              onClick={() => setListArrangeStyle(listStyle.RECT)}
-              className={`w-[30px] h-[30px] flex items-center justify-center outline-none rounded ${
-                listArrangeStyle == listStyle.RECT
-                  ? "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100"
-                  : ""
-              }`}
-            >
-              <HiViewList />
-            </button>
-          </div>
-        </div>
-        {/* end of search and rearrange container */}
+              <section>
+                <div>
+                  <div>
+                    <p className="flex justify-start items-center gap-x-1">
+                      <span className="font-lighter text-gray-600 dark:text-gray-500">
+                        {new Date(repo?.date).toLocaleDateString()}
+                      </span>
+                      <BsGithub className="mb-1 inline-block" />
+                    </p>
+                    <h3 className="tracking-wider font-semibold text-2xl text-center">
+                      {repo?.name}
+                    </h3>
+                  </div>
+                  <ul className="mt-3 flex flex-wrap justify-center text-xs gap-1">
+                    {repo?.tools?.map((tool, index) => (
+                      <li
+                        key={index}
+                        className="rounded-md p-2 text-gray-800 bg-gray-100 dark:text-gray-200 dark:bg-gray-900"
+                      >
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-        <div></div>
+                <div className="mt-3">
+                  <p className="mx-auto w-full text-center text-sm tracking-wider font-bold text-gray-700 p-3 dark:text-gray-400 md:w-[80%]">
+                    {repo?.description}
+                  </p>
+                </div>
+
+                <div className="mt-3 flex gap-6 items-center justify-center">
+                  <Link
+                    href={repo?.websiteLink}
+                    className="p-2 px-3 text-gray-200 bg-gray-600 dark:bg-gray-500 rounded"
+                  >
+                    Website
+                  </Link>
+                  <Link
+                    href={repo?.githubLink}
+                    className="p-2 px-3 text-gray-200 bg-gray-600 dark:bg-gray-500 rounded"
+                  >
+                    Github
+                  </Link>
+                </div>
+              </section>
+            </article>
+          ))}
+        </section>
 
         <Footer />
       </div>

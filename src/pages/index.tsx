@@ -1,10 +1,26 @@
+import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRef } from "react";
 import Navigation from "../components/Navigation";
 import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 import Footer from "@/components/Footer";
 
-export default function homePage() {
+type homeProps = {
+  image: string;
+};
+export const getStaticProps: GetStaticProps = async () => {
+  // (https://api.github.com/users/naijadeveloper)
+  const response = await fetch("https://api.github.com/users/naijadeveloper");
+  const { avatar_url } = await response.json();
+  return {
+    props: {
+      image: avatar_url,
+    },
+    revalidate: 50,
+  };
+};
+
+export default function homePage({ image }: homeProps) {
   const dialog = useRef<HTMLDialogElement>();
   return (
     <>
@@ -22,8 +38,8 @@ export default function homePage() {
       <div className="relative mx-auto min-h-screen w-full bg-gray-100 p-4 pt-16 pb-14 dark:bg-gray-900 md:w-[98%] md:rounded-t-lg flex flex-col items-center">
         <img
           className="w-[300px] h-[300px] object-cover drop-shadow-[0px_0px_50px_seagreen] border-4 border-gray-800 dark:border-gray-100 animate-[blob_25s_infinite]"
-          src="/imgs/me.jpg"
-          alt="Image of Enoch's face"
+          src={image}
+          alt="Enoch's image"
         />
 
         <div className="w-full sm:w-[90%] md:w-[70%] text-center mt-3">
@@ -47,7 +63,9 @@ export default function homePage() {
             a developer from Nigeria. I can build web, mobile and desktop
             applications with Javascript or Typescript. I would love to
             contribute to your open source project if it involves Javascript or
-            Typescript. Checkout my{" "}
+            Typescript. If it doesn't, rest assured I can learn whatever tech
+            tool you are using and help you with it💪🏾. So still hit me up✌🏾.
+            Checkout my{" "}
             <Link
               href="https://digital-resume-lime.vercel.app/"
               target="_blank"
@@ -69,17 +87,17 @@ export default function homePage() {
               Tools
             </h3>
             <ul className="tools-list flex flex-wrap justify-center gap-7">
-              <img src="/imgs/html5-color.svg" alt="html5" />
-              <img src="/imgs/css3-color.svg" alt="css3" />
-              <img src="/imgs/tailwindcss-color.svg" alt="tailwindcss" />
-              <img src="/imgs/chakraui-color.svg" alt="chakraui" />
-              <img src="/imgs/javascript-color.svg" alt="javascript" />
-              <img src="/imgs/typescript-color.svg" alt="typescript" />
-              <img src="/imgs/react-color.svg" alt="react" />
-              <img src="/imgs/nextdotjs-color.svg" alt="nextdotjs" />
-              <img src="/imgs/vuedotjs-color.svg" alt="vuedotjs" />
-              <img src="/imgs/mongodb-color.svg" alt="mongodb" />
-              <img src="/imgs/firebase-color.svg" alt="firebase" />
+              <img src="/imgs/html5.svg" alt="html5" />
+              <img src="/imgs/css3.svg" alt="css3" />
+              <img src="/imgs/tailwindcss.svg" alt="tailwindcss" />
+              <img src="/imgs/chakraui.svg" alt="chakraui" />
+              <img src="/imgs/javascript.svg" alt="javascript" />
+              <img src="/imgs/typescript.svg" alt="typescript" />
+              <img src="/imgs/react.svg" alt="react" />
+              <img src="/imgs/nextjs.svg" alt="nextjs" />
+              <img src="/imgs/vuejs.svg" alt="vuejs" />
+              <img src="/imgs/mongodb.svg" alt="mongodb" />
+              <img src="/imgs/firebase.svg" alt="firebase" />
             </ul>
           </div>
           <div className="mt-8">

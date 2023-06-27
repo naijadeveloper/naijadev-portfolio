@@ -1,13 +1,16 @@
 import { Squada_One } from "next/font/google";
-import ThemeSwitch from "./ThemeSwitch";
-import type { themeProp } from "./AppLayout";
+import dynamic from "next/dynamic";
+
+const ThemeSwitch = dynamic(() => import("@/components/ThemeSwitch"), {
+  ssr: false,
+});
 
 const headfont = Squada_One({
   weight: "400",
   subsets: ["latin"],
 });
 
-export default function Header({ theme, setTheme }: themeProp) {
+export default function Header() {
   return (
     <header className="relative flex justify-center items-center pb-3">
       <h1 className={`uppercase ${headfont.className} max-[500px]:text-4xl`}>
@@ -19,7 +22,7 @@ export default function Header({ theme, setTheme }: themeProp) {
         <span className="text-green-600 dark:text-green-700">Developer</span>
       </h1>
 
-      <ThemeSwitch theme={theme} setTheme={setTheme} />
+      <ThemeSwitch />
     </header>
   );
 }

@@ -50,16 +50,12 @@ export default function homePage({ image }: homeProps) {
           </h2>
           <p className="leading-7">
             Hi!!👋🏾 My name is{" "}
-            <Link
-              href="https://www.github.com/naijadeveloper"
-              target="_blank"
-              className="group relative underline decoration-4 underline-offset-4 whitespace-nowrap"
-            >
+            <p className="group inline-block relative underline decoration-4 underline-offset-4 whitespace-nowrap">
               Enoch Enujiugha,
               <span className="z-10 invisible absolute bottom-[100%] left-0 p-px px-2 text-center bg-gray-900 text-gray-100 dark:bg-gray-100 dark:text-gray-800 group-hover:visible">
                 Awesomeness
               </span>
-            </Link>{" "}
+            </p>{" "}
             a developer from Nigeria. I can build web, mobile and desktop
             applications with Javascript or Typescript. I would love to
             contribute to your open source project if it involves Javascript or

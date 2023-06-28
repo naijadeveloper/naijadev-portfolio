@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-5xl font-extrabold my-4;
+  }
+  h2 {
+    @apply text-4xl font-extrabold my-4;
+  }
+  img {
+    @apply shrink-0;
+  }
+
+  ul.tools-list img {
+    @apply w-7;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(11, 11, 11, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(11, 11, 11, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(255, 252, 252, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 252, 252, 0.3);
+  }
+}
+
+@layer utilities {
+  @keyframes blob {
+    0%,
+    50%,
+    100% {
+      border-radius: 81% 19% 53% 47% / 23% 43% 57% 77%;
+    }
+    25% {
+      border-radius: 60% 40% 81% 19% / 38% 67% 33% 62%;
+    }
+    75% {
+      border-radius: 10% 90% 40% 60% / 52% 42% 58% 48%;
+    }
+  }
+
+  @keyframes bounce-x {
+    0%,
+    100% {
+      transform: translateX(-10%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateX(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes bounce-x-plus {
+    0%,
+    100% {
+      transform: translateX(10%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateX(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes bounce-y {
+    0%,
+    100% {
+      transform: translateY(10%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+}

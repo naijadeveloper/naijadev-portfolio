@@ -1,10 +1,7 @@
-# This is an Altschool website project created from React that shows all my Github repositories and important Information
+# My portfolio website
 
-- I implemented the **Fetch API**  to _api.github.com_
-- I designed a page to show the list of repositories
-- I designed another page to show an individual repository clicked from the list of repositories using nested routes
-- I implemented proper **SEO**.
-- I implemented **Error Boundary**, I designed a page for the error boundary.
-- And lastly, I created a **404 page**.
+## This website was created using nextjs 13 pages directory, along with typescript and tailwindcss.
 
-You can preview the website at [Vercel](https://naijadeveloper-github-info-website.vercel.app/).
+The website's design is simple and straight. It shows a list of the tools I use, a list of my socials so any one can contact me, you can even send an email to me directly through the site. It shows a list of all the fullstack projects that I have built.
+
+**Note: If you like the layout design and you would like to use it, you are free to do so. A simple "hi Enoch" DM, on twitter or linkedin would be nice though, but it is not compulsory.**

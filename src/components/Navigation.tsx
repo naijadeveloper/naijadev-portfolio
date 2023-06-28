@@ -24,7 +24,7 @@ export default function Navigation({
   return (
     <ul className="flex justify-center bg-gray-900 dark:bg-gray-950">
       <li
-        className={`w-[100px] p-3 ${li1_bg} ${li1_tx} flex justify-center items-center rounded-tl-md ${darkli1_bg} ${darkli1_tx} font-bold border-t border-l border-gray-200`}
+        className={`w-[100px] p-3 ${li1_bg} ${li1_tx} flex justify-center items-center rounded-tl-md ${darkli1_bg} ${darkli1_tx} font-bold`}
       >
         <span className="mr-px" role="icon" aria-label="about-icon">
           🤵🏾
@@ -33,7 +33,7 @@ export default function Navigation({
       </li>
 
       <li
-        className={`w-[100px] p-3 ${li2_bg} ${li2_tx} flex justify-center items-center rounded-tr-md ${darkli2_bg} ${darkli2_tx} font-bold border-t border-r border-gray-200`}
+        className={`w-[100px] p-3 ${li2_bg} ${li2_tx} flex justify-center items-center rounded-tr-md ${darkli2_bg} ${darkli2_tx} font-bold`}
       >
         <span className="mr-px" role="icon" aria-label="project-icon">
           🗃️

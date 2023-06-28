@@ -6,8 +6,6 @@ import { BsGithub } from "react-icons/bs";
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/Footer";
 
-import repos from "@/data/repo.json";
-
 interface repoProps {
   name: string;
   tools: string[];
@@ -37,40 +35,45 @@ export const getStaticProps: GetStaticProps = async () => {
     return Date.now(date2) - Date.now(date1);
   });
   //4 fetch the metadata from the README file for each repo, create object of that with the date (https://api.github.com/repos/naijadeveloper/repo-name/contents) then (if content.name is README.md, get content.download_url) then (const { data: frontmatter, content } = matter(mdFile);) if frontmatter is an empty object, *ignore* that repo then
-  const reposData: repoProps[] = validRepos.map((repo) => {
-    const repoDate: string = repo?.created_at;
+  const promises = validRepos.map(async (repo) => {
+    const date: string = repo?.created_at;
     // fetch contents
-    // fetch(`https://api.github.com/repos/naijadeveloper/${repo?.name}/contents`)
-    //   .then((res) => res.json())
-    //   .then((contents) => {
-    //     let validContent = contents.filter(
-    //       (content) => content?.name == "README.md"
-    //     );
-    //     fetch(validContent[0]?.download_url)
-    //       .then((res) => res.text())
-    //       .then((md) => {
-    //         const { data: frontmatter } = matter(md);
-    //         if (Object.values(frontmatter).length == 0) return;
-    //         let rObject = {
-    //           ...(frontmatter as {
-    //             name: string;
-    //             tools: string[];
-    //             description: string;
-    //             websiteLink: string;
-    //             githubLink: string;
-    //           }),
-    //           date: repoDate,
-    //         };
-    //         return rObject;
-    //       });
-    //   });
+    let res = await fetch(
+      `https://api.github.com/repos/naijadeveloper/${repo?.name}/contents`
+    );
+    let contents = await res.json();
+
+    let validContent = contents.filter(
+      (content) => content?.name == "README.md"
+    );
+
+    res = await fetch(validContent[0]?.download_url);
+    let md = await res.text();
+
+    const { data: frontmatter } = matter(md);
+    if (Object.values(frontmatter).length == 0) return {};
+
+    let rObject = {
+      ...(frontmatter as {
+        name: string;
+        tools: string[];
+        description: string;
+        websiteLink: string;
+        githubLink: string;
+      }),
+      date,
+    };
+    return rObject;
   });
+
+  let reposData: repoProps[] = await Promise.all(promises);
+  reposData = reposData.filter((repoObj) => Object.values(repoObj).length > 0);
   //5 finally return the array of objects
   return {
     props: {
       reposData,
     },
-    revalidate: 50,
+    revalidate: 10,
   };
 };
 
@@ -79,7 +82,6 @@ export default function projectsPage({
 }: {
   reposData: repoProps[];
 }) {
-  console.log(reposData);
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
@@ -138,12 +140,14 @@ export default function projectsPage({
                 <div className="mt-3 flex gap-6 items-center justify-center">
                   <Link
                     href={repo?.websiteLink}
+                    target="_blank"
                     className="p-2 px-3 text-gray-200 bg-gray-600 dark:bg-gray-500 rounded"
                   >
                     Website
                   </Link>
                   <Link
                     href={repo?.githubLink}
+                    target="_blank"
                     className="p-2 px-3 text-gray-200 bg-gray-600 dark:bg-gray-500 rounded"
                   >
                     Github

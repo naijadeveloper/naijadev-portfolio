@@ -93,7 +93,6 @@ export default function homePage({ image }: homeProps) {
               <img src="/imgs/nextjs.svg" alt="nextjs" />
               <img src="/imgs/vuejs.svg" alt="vuejs" />
               <img src="/imgs/mongodb.svg" alt="mongodb" />
-              <img src="/imgs/firebase.svg" alt="firebase" />
             </ul>
           </div>
           <div className="mt-8">

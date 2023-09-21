@@ -5,22 +5,22 @@ import Navigation from "../components/Navigation";
 import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 import Footer from "@/components/Footer";
 
-type homeProps = {
-  image: string;
-};
-export const getStaticProps: GetStaticProps = async () => {
-  // (https://api.github.com/users/naijadeveloper)
-  const response = await fetch("https://api.github.com/users/naijadeveloper");
-  const { avatar_url } = await response.json();
-  return {
-    props: {
-      image: avatar_url,
-    },
-    revalidate: 50,
-  };
-};
+// type homeProps = {
+//   image: string;
+// };
+// export const getStaticProps: GetStaticProps = async () => {
+//   // (https://api.github.com/users/naijadeveloper)
+//   const response = await fetch("https://api.github.com/users/naijadeveloper");
+//   const { avatar_url } = await response.json();
+//   return {
+//     props: {
+//       image: avatar_url,
+//     },
+//     revalidate: 50,
+//   };
+// };
 
-export default function homePage({ image }: homeProps) {
+export default function homePage() {
   const dialog = useRef<HTMLDialogElement>();
   return (
     <>
@@ -38,7 +38,7 @@ export default function homePage({ image }: homeProps) {
       <div className="relative mx-auto min-h-screen w-full bg-gray-100 p-4 pt-16 pb-14 dark:bg-gray-900 md:w-[98%] md:rounded-t-lg flex flex-col items-center">
         <img
           className="w-[300px] h-[300px] object-cover drop-shadow-[0px_0px_50px_seagreen] border-4 border-gray-800 dark:border-gray-100 animate-[blob_25s_infinite]"
-          src={image}
+          src="/mmeju.jpg"
           alt="Enoch's image"
         />
 

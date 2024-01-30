@@ -22,10 +22,11 @@ export default function Navigation() {
 
       <Button
         asChild
-        variant={path == "/projects" ? "outline" : "secondary"}
+        variant={path.includes("/projects") ? "outline" : "secondary"}
         size="lg"
         className={`max-[500px]:h-10 max-[500px]:px-4 max-[500px]:py-2 font-bold rounded-tl-none rounded-tr-none rounded-br-none rounded-bl-none ${
-          path == "/projects" && "hover:bg-background border-2 border-b-0"
+          path.includes("/projects") &&
+          "hover:bg-background border-2 border-b-0"
         }`}
       >
         <Link href="/projects">Projects</Link>

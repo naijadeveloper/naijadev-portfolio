@@ -18,12 +18,12 @@ export default function Default({
         {description}
       </p>
       <div className="flex flex-col sm:flex-row sm:justify-center">
-        <a
-          href="#"
+        <Link
+          href={`/projects/${link}`}
           className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-900"
         >
           Explore
-        </a>
+        </Link>
       </div>
     </div>
   );

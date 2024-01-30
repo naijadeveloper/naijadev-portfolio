@@ -2,13 +2,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function LoadingSkeleton() {
   return (
-    <div className="w-full sm:w-[90%] space-y-10">
+    <div className="w-full sm:w-[90%] md:w-[80%] space-y-10">
       {Array(4)
         .fill(0)
         .map((_, i) => (
           <div
             key={i}
-            className="min-h-[250px] py-8 px-4 mx-auto text-center rounded-lg shadow-xl bg-gray-800 border-gray-700 lg:py-16 max-sm:px-2"
+            className="min-h-[200px] py-8 px-4 mx-auto text-center rounded-lg shadow-xl bg-gray-800 border-gray-700 lg:py-16 max-sm:px-2"
           >
             <div className="mb-8 flex flex-col items-center">
               <Skeleton className="w-[70%] h-[100px] rounded-md bg-gray-900" />

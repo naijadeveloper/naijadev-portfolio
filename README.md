@@ -4,7 +4,7 @@
 
 <br/>
 <div align="center">
-  <a href="https://github.com/naijadeveloper/Docket">
+  <a href="https://github.com/naijadeveloper/naijadev-portfolio">
     <img src="./src/app/icon.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -49,7 +49,7 @@ Crafted with passion and purpose, my portfolio serves as a digital testament to 
 
 ## Screenshots
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-items:center; align-content: start;">
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items:center; align-content: start;">
   <img src="./public/imgs/screenshot4.png" width="375" />
   <img src="./public/imgs/screenshot2.png" width="375" />
   <img src="./public/imgs/screenshot3.png" width="375" />

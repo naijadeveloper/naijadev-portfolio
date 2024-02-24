@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/carousel";
 
 export default function ProfilePicture() {
-  const plugin = useRef(Autoplay({ delay: 10000, stopOnMouseEnter: true }));
+  const plugin = useRef(Autoplay({ delay: 4000, stopOnMouseEnter: true }));
 
   const { data, isLoading } = useQuery({
     queryKey: ["about"],

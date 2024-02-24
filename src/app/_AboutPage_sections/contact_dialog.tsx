@@ -10,7 +10,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-
 import { MdEmail } from "react-icons/md";
 
 export default function ContactDialog() {
@@ -20,7 +19,7 @@ export default function ContactDialog() {
         <DialogTrigger asChild>
           <button
             className="custom-bg inline-block relative overflow-hidden w-fit mx-auto mt-8 p-2 rounded cursor-pointer text-white 
-            min-[401px]:mt-20 hover:opacity-80"
+            min-[501px]:mt-20 hover:opacity-80"
           >
             <p className="flex justify-center align-items gap-x-2">
               <MdEmail size={24} />
@@ -32,10 +31,6 @@ export default function ContactDialog() {
           <form action="https://formspree.io/f/xwkjyarz" method="POST">
             <DialogHeader>
               <DialogTitle>Email me</DialogTitle>
-              <DialogDescription>
-                Type in your message and a way to contact you. Click send when
-                you're done.
-              </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
@@ -45,7 +40,7 @@ export default function ContactDialog() {
                 <Input
                   id="name"
                   name="Message"
-                  defaultValue="Hi Enoch, I want to hire you for a project"
+                  defaultValue="Hi Enoch, I would like to work with you"
                   className="col-span-3"
                 />
               </div>
@@ -56,7 +51,7 @@ export default function ContactDialog() {
                 <Input
                   id="username"
                   name="Contact"
-                  defaultValue="How do I reach out to you?"
+                  placeholder="Your twitter/linkedin/email address"
                   className="col-span-3"
                 />
               </div>

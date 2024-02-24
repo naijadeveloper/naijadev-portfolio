@@ -13,6 +13,7 @@ export default function QueryProvider({
       new QueryClient({
         defaultOptions: {
           queries: {
+            staleTime: 60 * 1000 * 2,
             gcTime: 1000 * 60 * 10, // 10 minutes cache
           },
         },

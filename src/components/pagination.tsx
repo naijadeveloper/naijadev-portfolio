@@ -31,7 +31,7 @@ export default function Pagination({
           <span className="font-semibold text-gray-900 dark:text-white">
             {length}
           </span>{" "}
-          Projects
+          {length > 1 ? "Projects" : "Project"}
         </span>
         <div className="inline-flex mt-2 xs:mt-0">
           <button

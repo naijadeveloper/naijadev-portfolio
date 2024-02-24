@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function LoadingSkeleton() {
+export default function ProjectCategoriesLoading() {
   return (
     <div className="w-full sm:w-[90%] md:w-[80%] space-y-10">
       {Array(4)

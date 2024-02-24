@@ -32,7 +32,7 @@ export default function Navigation() {
         <Link href="/projects">Projects</Link>
       </Button>
 
-      <Button
+      {/* <Button
         asChild
         variant={path == "/experience" ? "outline" : "secondary"}
         size="lg"
@@ -41,17 +41,17 @@ export default function Navigation() {
         }`}
       >
         <Link href="/experience">Experience</Link>
-      </Button>
+      </Button> */}
 
       <Button
         asChild
-        variant={path == "/blog" ? "outline" : "secondary"}
+        variant={path == "/experience" ? "outline" : "secondary"}
         size="lg"
         className={`max-[500px]:h-10 max-[500px]:px-4 max-[500px]:py-2 font-bold rounded-tl-none rounded-br-none rounded-bl-none ${
-          path == "/blog" && "hover:bg-background border-2 border-b-0"
+          path == "/experience" && "hover:bg-background border-2 border-b-0"
         }`}
       >
-        <Link href="/blog">Blog</Link>
+        <Link href="/experience">Experience</Link>
       </Button>
     </div>
   );

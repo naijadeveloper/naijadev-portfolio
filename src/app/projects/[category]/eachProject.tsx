@@ -1,23 +1,28 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
 type projectType = {
-  projectName: string;
-  projectDescription: string;
-  projectTools: string[];
-  projectWeb: string;
-  projectGithub: string;
+  category: string;
+  name: string;
+  description: string;
+  tools: string[];
+  webLink: string;
+  githubLink: string;
   label: string;
 };
 
-export default function ProjectPage({
+export default function EachProject({
   project,
   pageListLength,
   index,
+  categorySlug,
 }: {
   project: projectType;
   pageListLength: number;
   index: number;
+  categorySlug: string;
 }) {
   return (
     <figure
@@ -67,17 +72,15 @@ export default function ProjectPage({
         {project.label}
       </span>
 
-      <blockquote className="max-w-2xl mx-auto mb-4 lg:mb-8 text-gray-400">
-        <h3 className="text-lg font-semibold text-white">
-          {project.projectName}
-        </h3>
+      <blockquote className="max-w-2xl mx-auto mb-4 text-gray-400">
+        <h3 className="text-lg font-semibold text-white">{project.name}</h3>
         <ul className="mt-4 flex gap-2 flex-wrap items-center justify-center">
-          {project.projectTools.map((tool, i) => (
+          {project.tools.map((tool, i) => (
             <li
               key={i}
               className={`text-xs font-medium me-2 px-2.5 py-0.5 rounded ${
                 i == 0
-                  ? "bg-gray-700 text-red-400 border border-red-400"
+                  ? "bg-gray-700 text-green-400 border border-green-400"
                   : "bg-gray-700 text-gray-400 border border-gray-500"
               }`}
             >
@@ -85,13 +88,12 @@ export default function ProjectPage({
             </li>
           ))}
         </ul>
-        <p className="my-4">{project.projectDescription}</p>
-        {/*240/288 chars / 43/53 words*/}
+        <p className="mt-4">{project.description}</p>
       </blockquote>
 
       <figcaption className="flex items-center justify-center gap-4">
         <Link
-          href={project.projectGithub}
+          href={project.githubLink}
           className={`${buttonVariants({
             variant: "outline",
           })}`}
@@ -100,12 +102,12 @@ export default function ProjectPage({
         </Link>
 
         <Link
-          href={project.projectWeb}
+          href={project.webLink}
           className={`${buttonVariants({
             variant: "outline",
           })}`}
         >
-          Website
+          {categorySlug.includes("flutter") ? "Download app" : "Website"}
         </Link>
       </figcaption>
     </figure>

@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Header from "@/components/page_header";
-import Navigation from "@/components/page_navigation";
+
 import QueryProvider from "./query_provider";
+
+import Navigation from "@/components/page_navigation";
+import Header from "@/components/page_header";
+import Footer from "@/components/page-footer";
+
 import "@/style/global.css";
 
 const appFont = Poppins({
@@ -41,9 +45,10 @@ export default function RootLayout({
       <body className={`${appFont.variable} font-appfont min-h-screen`}>
         <Header />
         <Navigation />
-        <main className="relative mx-auto min-h-screen w-full p-4 pt-16 pb-5 md:w-[98%] md:rounded-t-lg flex flex-col items-center bg-gray-900">
+        <main className="relative mx-auto min-h-screen w-full px-4 pt-16 pb-5 md:w-[98%] md:rounded-t-lg flex flex-col items-center bg-gray-900">
           <QueryProvider>{children}</QueryProvider>
         </main>
+        <Footer />
       </body>
     </html>
   );

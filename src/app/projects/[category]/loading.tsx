@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function LoadingSkeleton() {
+export default function ProjectsPageLoading() {
   return (
     <div className="w-full grid mt-4 mb-6 rounded-lg shadow-sm md:grid-cols-2">
       {Array(4)

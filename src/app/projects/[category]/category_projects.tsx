@@ -80,8 +80,12 @@ export default function ProjectPage({
 
       <Pagination
         start={indexOfFirst + 1}
-        end={indexOfLast > data.length ? data.length : indexOfLast}
-        length={data.length}
+        end={
+          indexOfLast > allProjectsForThisCategorySlug.length
+            ? allProjectsForThisCategorySlug.length
+            : indexOfLast
+        }
+        length={allProjectsForThisCategorySlug.length}
         currentPage={currentPage}
         numOfPages={numOfPages}
         changePageForward={changePageForward}

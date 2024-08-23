@@ -76,7 +76,8 @@ export default function Description() {
                       (subPhrase) =>
                         subPhrase.value.toLowerCase().includes("flutter") ||
                         subPhrase.value.toLowerCase().includes("next") ||
-                        subPhrase.value.toLowerCase().includes("electron")
+                        subPhrase.value.toLowerCase().includes("electron") ||
+                        subPhrase.value.toLowerCase().includes("django")
                     )
                   ) {
                     return (
